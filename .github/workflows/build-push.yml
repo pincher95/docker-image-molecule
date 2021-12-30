@@ -25,7 +25,7 @@ jobs:
         run: docker run --name test-container -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro docker-image-molecule
 
       - name: Verify Molecule and Ansible the built image.
-        run: docker exec --tty test-container env TERM=xterm echo $(molecule --version)
+        run: docker exec --tty test-container env TERM=xterm molecule --version
 
   # If on master branch, build and release image.
   release:
