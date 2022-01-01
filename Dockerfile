@@ -13,5 +13,6 @@ RUN set -ex && \
     python3 python3-dev py3-pip gcc git curl build-base autoconf automake \
     py3-cryptography linux-headers musl-dev libffi-dev openssl-dev openssh && \
     python3 -m pip install ansible ansible-lint yamllint molecule molecule-docker --no-cache-dir --no-compile && \
+    pip install git+https://github.com/ansible-community/ansible-compat.git#egg=ansible-compat && \
     find /usr/lib/ -type d -name '__pycache__' -exec rm -rf {} + && \
     rm -rf /var/cache/apk/* /root/.cache
