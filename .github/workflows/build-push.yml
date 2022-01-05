@@ -39,17 +39,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - uses: dawidd6/action-get-tag@v1
-        id: tag
-        with:
-          # Optionally strip `v` prefix
-          strip_v: true
+      # - uses: dawidd6/action-get-tag@v1
+      #   id: tag
+      #   # with:
+      #     # Optionally strip `v` prefix
+      #     # strip_v: true
 
-      - uses: mr-smithers-excellent/docker-build-push@v3
+      - uses: mr-smithers-excellent/docker-build-push@v5
         name: Build and push Docker image.
         with:
           image: pincher95/${{ github.repository }}
-          tags: ${{steps.tag.outputs.tag}}, latest
+          # tags: ${{steps.tag.outputs.tag}}
+          addLatest: true
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKERHUB_USERNAME }}
